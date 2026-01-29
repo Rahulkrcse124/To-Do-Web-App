@@ -1,77 +1,47 @@
-📝 Todo Board Application (MERN Stack)
+# 📝 To-Do Web App (MERN Stack)
 
-A full-stack Todo Board Management Application built using the MERN stack (MongoDB, Express, React, Node.js).
-It supports authentication, board management, and todo tracking with a clean and scalable architecture.
+A full-stack **Task Management (To-Do) Web Application** built using the **MERN stack**, featuring user authentication, boards, to-dos, and secure password reset functionality.
 
-🚀 Features
-🔐 Authentication
+This project demonstrates clean architecture, secure authentication, REST APIs, and modern React practices.
 
-User Registration & Login
+---
 
-JWT-based Authentication
+## 🚀 Features
 
-Protected Routes
+- 🔐 User Authentication (Register / Login)
+- 🔑 JWT-based Authorization
+- 📧 Forgot Password & Reset Password (Email based)
+- 📋 Create & Manage Boards
+- ✅ Create, Update, Delete To-Dos inside Boards
+- 🛡️ Protected Routes
+- 📦 Modular Backend Architecture
+- 🎨 Clean & Responsive UI
 
-Secure Password Hashing using bcrypt
+---
 
-📋 Boards
+## 🛠️ Tech Stack
 
-Create Boards
+### Frontend
+- React.js
+- React Router
+- Axios
+- CSS (Modular styles)
 
-View User-specific Boards
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Bcrypt.js
+- Nodemailer
 
-Edit Board Title
+---
 
-Delete Boards
+## 📁 Project Structure
 
-✅ Todos
-
-Create Todos under Boards
-
-View Todos by Board
-
-Toggle Todo Completion
-
-Delete Todos
-
-🎨 UI
-
-Clean & responsive UI
-
-Reusable Navbar and Layout
-
-Route protection on frontend
-
-Component-wise CSS files
-
-🧰 Tech Stack
-Frontend
-
-React.js (Vite)
-
-React Router DOM
-
-Axios
-
-Plain CSS (component-based styling)
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB + Mongoose
-
-JWT (jsonwebtoken)
-
-bcryptjs
-
-CORS
-
-📁 Project Structure
-Backend
-
+### Backend
+```text
 backend/
 ├── controllers/
 │   ├── authController.js
@@ -91,14 +61,20 @@ backend/
 │   ├── boardRoutes.js
 │   └── todoRoutes.js
 │
+├── config/
+│   └── db.js
+│
 ├── server.js
 ├── package.json
 └── .env
 
 
-Frontend
-
+### Backend
+```text
 frontend/
+├── public/
+│   └── index.html
+│
 ├── src/
 │   ├── api/
 │   │   └── axios.js
@@ -110,107 +86,136 @@ frontend/
 │   ├── pages/
 │   │   ├── Login.jsx
 │   │   ├── Register.jsx
+│   │   ├── ForgotPassword.jsx
+│   │   ├── ResetPassword.jsx
 │   │   ├── Dashboard.jsx
 │   │   └── Board.jsx
 │   │
 │   ├── styles/
+│   │   ├── auth.css
 │   │   ├── navbar.css
 │   │   ├── dashboard.css
-│   │   ├── board.css
-│   │   └── auth.css
+│   │   └── board.css
 │   │
 │   ├── App.jsx
 │   └── main.jsx
 │
 ├── package.json
-└── index.html
+└── package-lock.json
 
 
-🔑 Environment Variables
+⚙️ Environment Variables
 
 Create a .env file inside the backend folder:
-
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+MONGO_URI=mongodb://127.0.0.1:27017/todoapp
+JWT_SECRET=your_jwt_secret
 
-▶️ Getting Started
-1️⃣ Clone the repository
+EMAIL=yourgmail@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
 
-git clone https://github.com/your-username/todo-board-app.git
-cd todo-board-app
+⚠️ Use Gmail App Password, not your actual Gmail password.
 
+🧪 Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/To-Do-Web-App.git
+cd To-Do-Web-App
 
 2️⃣ Backend Setup
-
 cd backend
 npm install
 npm run dev
 
-
-Server will run on:
+Server will start at:
 http://localhost:5000
 
-
 3️⃣ Frontend Setup
-
 cd frontend
 npm install
 npm run dev
 
-
-Frontend will run on:
-
+Frontend will run at:
 http://localhost:5173
 
+🔐 Authentication Flow
 
-🔐 API Overview
+Passwords are securely hashed using bcrypt
 
+JWT is used for session management
+
+Protected routes restrict unauthorized access
+
+Forgot password uses:
+
+Secure token generation
+
+Email verification
+
+Token expiry handling
+
+📌 API Endpoints
 Auth Routes
 POST   /api/auth/register
 POST   /api/auth/login
+POST   /api/auth/forgot-password
+PUT    /api/auth/reset-password/:token
 
 Board Routes
-GET    /api/boards
 POST   /api/boards
+GET    /api/boards
 PUT    /api/boards/:id
 DELETE /api/boards/:id
 
+
 Todo Routes
-GET    /api/todos/:boardId
-POST   /api/todos/:boardId
+POST   /api/todos
 PUT    /api/todos/:id
 DELETE /api/todos/:id
 
-🔒 All board and todo routes are JWT protected
 
-🛡️ Security Practices
+🧠 Security Highlights
 
 Password hashing using bcrypt
 
-JWT verification middleware
+JWT token authentication
 
-Protected frontend routes
+Reset tokens are hashed before storing
 
-User-specific data access
+Time-based token expiration
 
-📈 Future Improvements
+Protected API routes using middleware
 
-Drag & Drop Todos
+📸 Screenshots
+<img width="1200" height="669" alt="Screenshot 2026-01-29 212850" src="https://github.com/user-attachments/assets/0f95b889-3e6f-496b-bcfd-15578be0fd53" />
 
-Due dates & priority
+<img width="542" height="506" alt="Screenshot 2026-01-29 213015" src="https://github.com/user-attachments/assets/e9f836ff-ed29-4e0e-aafd-4ae373447f46" />
 
-Refresh Token Authentication
+<img width="559" height="493" alt="Screenshot 2026-01-29 213103" src="https://github.com/user-attachments/assets/50f31be9-f8f4-49fc-8842-0bde7b0e2191" />
 
-Role-based access (Admin/User)
+<img width="568" height="384" alt="Screenshot 2026-01-29 213224" src="https://github.com/user-attachments/assets/99e77ffc-ea37-4cd6-abe5-a2ed1879bf2d" />
 
-Deployment on AWS / Render
+<img width="524" height="406" alt="Screenshot 2026-01-29 213249" src="https://github.com/user-attachments/assets/25ff1566-e896-4eb7-9f17-71080a2a5bdc" />
 
-Unit & Integration Tests
-
-
-👨‍💻 Author
+🙌 Author
 
 Rahul Kumar
-🎓 B.Tech CSE | Full-Stack Developer
-💡 MERN | Cloud | DevOps Learner
+Full Stack Developer (MERN)
+📍 Jodhpur, Rajasthan
+
+⭐ Acknowledgements
+
+MongoDB
+
+Express.js
+
+React.js
+
+Node.js
+
+Open-source community
+
+
+
+📄 License
+
+This project is licensed under the MIT License.
