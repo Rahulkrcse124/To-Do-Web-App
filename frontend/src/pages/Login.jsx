@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../api/axios";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/auth.css";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,9 +11,20 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await API.post("/auth/login", { email, password });
-    localStorage.setItem("token", res.data.token);
-    navigate("/dashboard");
+
+    try {
+      const res = await API.post("/auth/login", { email, password });
+
+      localStorage.setItem("token", res.data.token);
+      toast.success("Login successful");
+
+      navigate("/dashboard");
+    } catch (error) {
+      // Backend error message
+      const message = error.response?.data?.message || "Something went wrong";
+
+      toast.error(message);
+    }
   };
 
   return (

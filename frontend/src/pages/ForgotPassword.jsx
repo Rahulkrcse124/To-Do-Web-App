@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../api/axios";
 import "../styles/auth.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ export default function ForgotPassword() {
     try {
       const res = await API.post("/auth/forgot-password", { email });
       setMessage(res.data.message);
+      toast.success(res.data.message);
     } catch (err) {
       setMessage(err.response?.data?.message || "Something went wrong");
     }

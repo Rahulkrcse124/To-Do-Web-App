@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -19,7 +20,8 @@ const Register = () => {
         password,
       });
 
-      alert(res.data.message);
+      
+      toast.success(res.data.message);
       navigate("/");
     } catch (error) {
       console.log(error);
