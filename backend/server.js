@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://to-do-web-app-ugek.onrender.com",
+    origin: "https://to-do-web-app-frontend.onrender.com/",
     credentials: true,
   }),
 );
