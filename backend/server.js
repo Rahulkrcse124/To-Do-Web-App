@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://to-do-web-app-frontend.onrender.com/",
+    origin: "http://localhost:5173",
     credentials: true,
   }),
 );
